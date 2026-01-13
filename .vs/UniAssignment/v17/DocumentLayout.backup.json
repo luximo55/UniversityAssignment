@@ -1,0 +1,111 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\luxim\\Documents\\UniAssignment\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\transObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\transObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\player.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\player.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\transObject.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\transObject.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 253,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "player.cpp",
+              "DocumentMoniker": "C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\player.cpp",
+              "RelativeDocumentMoniker": "UniAssignment\\player.cpp",
+              "ToolTip": "C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\player.cpp",
+              "RelativeToolTip": "UniAssignment\\player.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-13T15:29:23.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "transObject.cpp",
+              "DocumentMoniker": "C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\transObject.cpp",
+              "RelativeDocumentMoniker": "UniAssignment\\transObject.cpp",
+              "ToolTip": "C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\transObject.cpp",
+              "RelativeToolTip": "UniAssignment\\transObject.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-12T16:31:43.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\main.cpp",
+              "RelativeDocumentMoniker": "UniAssignment\\main.cpp",
+              "ToolTip": "C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\main.cpp",
+              "RelativeToolTip": "UniAssignment\\main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-12T15:24:16.751Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 147,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "player.hpp",
+              "DocumentMoniker": "C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\player.hpp",
+              "RelativeDocumentMoniker": "UniAssignment\\player.hpp",
+              "ToolTip": "C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\player.hpp",
+              "RelativeToolTip": "UniAssignment\\player.hpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-12T16:01:44.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "transObject.hpp",
+              "DocumentMoniker": "C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\transObject.hpp",
+              "RelativeDocumentMoniker": "UniAssignment\\transObject.hpp",
+              "ToolTip": "C:\\Users\\luxim\\Documents\\UniAssignment\\UniAssignment\\transObject.hpp",
+              "RelativeToolTip": "UniAssignment\\transObject.hpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-12T16:28:47.237Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
