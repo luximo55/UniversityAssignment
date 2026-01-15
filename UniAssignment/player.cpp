@@ -6,6 +6,7 @@ Player::Player()
 {
 	playerSprite = LoadTexture("Sprites/player.png");
 	activeSprite = playerSprite;
+	isTransformed = false;
 	position.x = 100;
 	position.y = 100;
 	speed = 5;

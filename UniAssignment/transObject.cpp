@@ -3,7 +3,7 @@
 TransObject::TransObject(int choice, int posX, int posY)
 {
 	TexturePick(choice);
-
+	isPickedUp = false;
 	position.x = posX;
 	position.y = posY;
 }
@@ -26,14 +26,18 @@ void TransObject::TexturePick(int choice)
 	}
 }
 
-void TransObject::Draw()
+void TransObject::Draw(bool isPickedUp)
 {
-	DrawTextureV(objectSprite, position, WHITE);
+	if(!isPickedUp)
+		DrawTextureV(objectSprite, position, WHITE);
 }
 
 bool TransObject::Collision(Rectangle playerRect)
 {
-	return CheckCollisionRecs(GetRect(), playerRect);
+	if (!isPickedUp)
+		return CheckCollisionRecs(GetRect(), playerRect);
+	else
+		return false;
 }
 
 Rectangle TransObject::GetRect()

@@ -9,7 +9,7 @@ list<shared_ptr<TransObject>> InitializeObjects()
 {
 	auto table = make_shared<TransObject>(0, 650, 100);
 	auto tv = make_shared<TransObject>(1, 100, 450);
-	list<shared_ptr<TransObject>> transObjects = { table, tv };	
+	list<shared_ptr<TransObject>> transObjects = { table, tv };
 	return transObjects;
 }
 
@@ -34,20 +34,31 @@ int main()
 			if (to->Collision(player.GetRect()))
 			{
 				isColliding = true;
-				if (IsKeyReleased(KEY_SPACE))
+				if (IsKeyReleased(KEY_SPACE) && !player.isTransformed) 
+				{
 					player.SpriteChange(to->objectSprite, isColliding);
+					player.position = to->position;
+					to->isPickedUp = true;
+					player.isTransformed = true;
+				}
 				break;
 			}
 			else
 			{
 				isColliding = false;
-				if (IsKeyReleased(KEY_SPACE))
+				if (IsKeyReleased(KEY_SPACE) && player.isTransformed && to->isPickedUp)
+				{
 					player.SpriteChange(to->objectSprite, isColliding);
+					player.isTransformed = false;
+					to->position = player.position;
+				}
+			}
+			if (!player.isTransformed)
+			{
+				to->isPickedUp = false;
 			}
 		}
-		player.Update();
-
-		// --Positions--
+		player.Update();		
 
 		// --Drawing--
 		BeginDrawing();
@@ -61,7 +72,7 @@ int main()
 
 			for (shared_ptr<TransObject> to : transObjects)
 			{
-				to->Draw();
+				to->Draw(to->isPickedUp);
 			}
 			player.Draw();
 			player.DrawHitBox(isColliding);
