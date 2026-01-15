@@ -1,16 +1,28 @@
 using namespace std;
 #include <list>
 #include <memory>
+#include <math.h>
+#include <iostream>
 #include "raylib.h"
 #include "player.hpp"
 #include "transObject.hpp"
 
 list<shared_ptr<TransObject>> InitializeObjects()
 {
-	auto table = make_shared<TransObject>(0, 650, 100);
-	auto tv = make_shared<TransObject>(1, 100, 450);
+	auto table = make_shared<TransObject>(0, 650, 100, 400, 550);
+	auto tv = make_shared<TransObject>(1, 100, 450, 450, 300);
 	list<shared_ptr<TransObject>> transObjects = { table, tv };
 	return transObjects;
+}
+
+bool CheckPlace(shared_ptr<TransObject> to)
+{
+	if (abs(to->position.x - to->goalPos.x) <= 15 && abs(to->position.x - to->goalPos.x) >= 0)
+	{
+		to->position = to->goalPos;
+		return false;
+	}
+	return true;
 }
 
 int main()
@@ -31,7 +43,7 @@ int main()
 		bool isColliding;
 		for (shared_ptr<TransObject> to : transObjects)
 		{
-			if (to->Collision(player.GetRect()))
+			if (to->Collision(player.GetRect(), player.isTransformed) && to->pickupable)
 			{
 				isColliding = true;
 				if (IsKeyReleased(KEY_SPACE) && !player.isTransformed) 
@@ -49,8 +61,9 @@ int main()
 				if (IsKeyReleased(KEY_SPACE) && player.isTransformed && to->isPickedUp)
 				{
 					player.SpriteChange(to->objectSprite, isColliding);
-					player.isTransformed = false;
 					to->position = player.position;
+					player.isTransformed = false;
+					to->pickupable = CheckPlace(to);
 				}
 			}
 			if (!player.isTransformed)
@@ -72,7 +85,7 @@ int main()
 
 			for (shared_ptr<TransObject> to : transObjects)
 			{
-				to->Draw(to->isPickedUp);
+				to->Draw();
 			}
 			player.Draw();
 			player.DrawHitBox(isColliding);

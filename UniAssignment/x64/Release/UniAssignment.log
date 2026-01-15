@@ -1,6 +1,10 @@
-﻿  main.cpp
+﻿  transObject.cpp
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\transObject.cpp(8,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\transObject.cpp(9,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\transObject.cpp(10,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\transObject.cpp(11,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Generating code
-  1 of 138 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+  5 of 141 functions ( 3.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

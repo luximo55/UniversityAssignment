@@ -5,13 +5,15 @@
 class TransObject
 {
 	public:
-		TransObject(int choice, int posX, int posY);
+		TransObject(int choice, int posX, int posY, int goalX, int goalY);
 		~TransObject();
-		void Draw(bool isPickedUp);
+		void Draw();
 		Texture2D objectSprite;
-		bool Collision(Rectangle playerRect);
+		bool Collision(Rectangle playerRect, bool isTransformed);
 		bool isPickedUp;
+		bool pickupable;
 		Vector2 position;
+		Vector2 goalPos;
 	private:
 		void TexturePick(int choice);
 		Rectangle GetRect();

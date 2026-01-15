@@ -1,11 +1,14 @@
 #include "transObject.hpp"
 
-TransObject::TransObject(int choice, int posX, int posY)
+TransObject::TransObject(int choice, int posX, int posY, int goalX, int goalY)
 {
 	TexturePick(choice);
 	isPickedUp = false;
+	pickupable = true;
 	position.x = posX;
 	position.y = posY;
+	goalPos.x = goalX;
+	goalPos.y = goalY;
 }
 
 TransObject::~TransObject()
@@ -26,15 +29,16 @@ void TransObject::TexturePick(int choice)
 	}
 }
 
-void TransObject::Draw(bool isPickedUp)
+void TransObject::Draw()
 {
 	if(!isPickedUp)
 		DrawTextureV(objectSprite, position, WHITE);
+	DrawTextureV(objectSprite, goalPos, Color{ 255, 255, 255, 100 });
 }
 
-bool TransObject::Collision(Rectangle playerRect)
+bool TransObject::Collision(Rectangle playerRect, bool isTransformed)
 {
-	if (!isPickedUp)
+	if (!isTransformed)
 		return CheckCollisionRecs(GetRect(), playerRect);
 	else
 		return false;
