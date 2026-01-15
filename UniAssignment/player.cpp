@@ -4,7 +4,8 @@ using namespace std;
 
 Player::Player()
 {
-	activeSprite = LoadTexture("Sprites/player.png");
+	playerSprite = LoadTexture("Sprites/player.png");
+	activeSprite = playerSprite;
 	position.x = 100;
 	position.y = 100;
 	speed = 5;
@@ -20,7 +21,7 @@ void Player::Draw()
 	DrawTextureV(activeSprite, position, WHITE);
 }
 
-void Player::Update(bool isColliding)
+void Player::Update()
 {
 	if (IsKeyDown(KEY_RIGHT))
 	{
@@ -38,11 +39,14 @@ void Player::Update(bool isColliding)
 	{
 		position.y -= speed;
 	}
+}
 
-	if (IsKeyReleased(KEY_SPACE) && isColliding)
-	{
-
-	}
+void Player::SpriteChange(Texture2D objectTexture, bool isColliding)
+{
+	if (isColliding)
+		activeSprite = objectTexture;
+	else
+		activeSprite = playerSprite;
 }
 
 Rectangle Player::GetRect()

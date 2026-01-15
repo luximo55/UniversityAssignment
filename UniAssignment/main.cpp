@@ -1,7 +1,17 @@
+using namespace std;
+#include <list>
+#include <memory>
 #include "raylib.h"
 #include "player.hpp"
 #include "transObject.hpp"
 
+list<shared_ptr<TransObject>> InitializeObjects()
+{
+	auto table = make_shared<TransObject>(0, 650, 100);
+	auto tv = make_shared<TransObject>(1, 100, 450);
+	list<shared_ptr<TransObject>> transObjects = { table, tv };	
+	return transObjects;
+}
 
 int main()
 {
@@ -11,22 +21,31 @@ int main()
 	Vector2 position;
 	position.x = 500;
 	position.y = 200;
-	Vector2 altPos;
-	altPos.x = 100;
-	altPos.y = 500;
 	Player player;
-	TransObject table(0, 650, 100);
-	TransObject tv(1, 100, 450);
+	list<shared_ptr<TransObject>> transObjects = InitializeObjects();
 
+	// --Game loop--
 	while(WindowShouldClose() == false)
 	{
 		// --Events--
 		bool isColliding;
-		if (table.Collision(player.GetRect()) || tv.Collision(player.GetRect()))
-			isColliding = true;
-		else
-			isColliding = false;
-		player.Update(isColliding);
+		for (shared_ptr<TransObject> to : transObjects)
+		{
+			if (to->Collision(player.GetRect()))
+			{
+				isColliding = true;
+				if (IsKeyReleased(KEY_SPACE))
+					player.SpriteChange(to->objectSprite, isColliding);
+				break;
+			}
+			else
+			{
+				isColliding = false;
+				if (IsKeyReleased(KEY_SPACE))
+					player.SpriteChange(to->objectSprite, isColliding);
+			}
+		}
+		player.Update();
 
 		// --Positions--
 
@@ -40,8 +59,10 @@ int main()
 
 			//Playable elements
 
-			table.Draw();
-			tv.Draw();
+			for (shared_ptr<TransObject> to : transObjects)
+			{
+				to->Draw();
+			}
 			player.Draw();
 			player.DrawHitBox(isColliding);
 			
