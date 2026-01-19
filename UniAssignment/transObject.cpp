@@ -33,7 +33,9 @@ void TransObject::Draw()
 {
 	if(!isPickedUp)
 		DrawTextureV(objectSprite, position, WHITE);
-	DrawTextureV(objectSprite, goalPos, Color{ 255, 255, 255, 100 });
+	else
+		DrawTextureV(objectSprite, goalPos, Color{ 255, 255, 255, 100 });
+	DrawLineV(position, goalPos, RED);
 }
 
 bool TransObject::Collision(Rectangle playerRect, bool isTransformed)

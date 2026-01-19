@@ -7,6 +7,7 @@ Player::Player()
 	playerSprite = LoadTexture("Sprites/player.png");
 	activeSprite = playerSprite;
 	isTransformed = false;
+	gameover = false;
 	position.x = 100;
 	position.y = 100;
 	speed = 5;
@@ -24,22 +25,21 @@ void Player::Draw()
 
 void Player::Update()
 {
-	if (IsKeyDown(KEY_RIGHT))
+	if(!gameover)
 	{
-		position.x += speed;
+		if (IsKeyDown(KEY_RIGHT))
+			position.x += speed;
+		else if (IsKeyDown(KEY_LEFT))
+			position.x -= speed;
+		if (IsKeyDown(KEY_DOWN))
+			position.y += speed;
+		else if (IsKeyDown(KEY_UP))
+			position.y -= speed;
 	}
-	else if (IsKeyDown(KEY_LEFT))
-	{
-		position.x -= speed;
-	}
-	if (IsKeyDown(KEY_DOWN))
-	{
-		position.y += speed;
-	}
-	else if (IsKeyDown(KEY_UP))
-	{
-		position.y -= speed;
-	}
+	else if (gameover)
+		if(IsKeyReleased(KEY_R))
+			cout << "RESTART";
+			//ADD RESTART FUNCTION
 }
 
 void Player::SpriteChange(Texture2D objectTexture, bool isColliding)

@@ -13,6 +13,7 @@ class Player
 		void SpriteChange(Texture2D objectTexture, bool isColliding);
 		bool isTransformed;
 		Vector2 position;
+		bool gameover;
 	private:
 		Texture2D activeSprite;
 		Texture2D playerSprite;

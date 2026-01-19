@@ -2,6 +2,7 @@ using namespace std;
 #include <list>
 #include <memory>
 #include <math.h>
+#include <string>
 #include <iostream>
 #include "raylib.h"
 #include "player.hpp"
@@ -17,7 +18,7 @@ list<shared_ptr<TransObject>> InitializeObjects()
 
 bool CheckPlace(shared_ptr<TransObject> to)
 {
-	if (abs(to->position.x - to->goalPos.x) <= 15 && abs(to->position.x - to->goalPos.x) >= 0)
+	if (abs(to->position.x - to->goalPos.x) <= 25 && abs(to->position.x - to->goalPos.x) >= 0)
 	{
 		to->position = to->goalPos;
 		return false;
@@ -25,16 +26,24 @@ bool CheckPlace(shared_ptr<TransObject> to)
 	return true;
 }
 
+void EndState(int score)
+{
+}
+
 int main()
 {
 	InitWindow(1024, 768, "BUas Project");
 	SetTargetFPS(60);
 
-	Vector2 position;
-	position.x = 500;
-	position.y = 200;
 	Player player;
 	list<shared_ptr<TransObject>> transObjects = InitializeObjects();
+	double timeCountdown = 100;
+	char timeChar[4];
+	char scoreText[5];
+	const char* goText = "Game over";
+	const char* restartText = "Press 'R' to try again";
+	bool gamePause = false;
+	int points = 0;
 
 	// --Game loop--
 	while(WindowShouldClose() == false)
@@ -64,6 +73,8 @@ int main()
 					to->position = player.position;
 					player.isTransformed = false;
 					to->pickupable = CheckPlace(to);
+					if (to->pickupable == false)
+						points++;
 				}
 			}
 			if (!player.isTransformed)
@@ -71,16 +82,26 @@ int main()
 				to->isPickedUp = false;
 			}
 		}
-		player.Update();		
+		if (IsKeyReleased(KEY_T))
+			player.gameover = true;
+		player.Update();
+		if (timeCountdown <= 0 || player.gameover && !gamePause)
+		{
+			double score = 0;
+			score = trunc((timeCountdown + 1) * 100 * points);
+			gamePause = true;
+			cout << "gameover ";
+			snprintf(scoreText, sizeof scoreText, "%.0f", score);
+			EndState(score);
+		}
+		else if(!player.gameover)
+		{
+			timeCountdown = 10 - GetTime();
+		}
 
 		// --Drawing--
 		BeginDrawing();
 		{
-			//System Drawing
-			ClearBackground(DARKBROWN);
-			DrawFPS(0, 0);
-
-
 			//Playable elements
 
 			for (shared_ptr<TransObject> to : transObjects)
@@ -89,7 +110,20 @@ int main()
 			}
 			player.Draw();
 			player.DrawHitBox(isColliding);
-			
+
+			//System Drawing
+			ClearBackground(DARKBROWN);
+			DrawFPS(0, 0);
+			snprintf(timeChar, sizeof timeChar, "%.3f", timeCountdown);
+			DrawText(timeChar, 100, 0, 20, GREEN);
+
+			if (player.gameover)
+			{
+				DrawText(goText, GetScreenWidth() / 2 - MeasureTextEx(GetFontDefault(), goText, 100, 10).x / 2, 50, 100, GREEN);
+				DrawText(scoreText, GetScreenWidth()/2 - MeasureTextEx(GetFontDefault(), scoreText, 100, 10).x/2, 150, 100, GREEN);
+				DrawText(restartText, GetScreenWidth() / 2 - MeasureTextEx(GetFontDefault(), restartText, 70, 7).x / 2, 600, 70, GREEN);
+			}
+
 		}
 		EndDrawing();
 	}
