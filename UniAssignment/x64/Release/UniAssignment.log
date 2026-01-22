@@ -1,10 +1,10 @@
 ﻿  main.cpp
-C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(95,13): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(122,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(123,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(124,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(105,13): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(145,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(146,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(147,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Generating code
-  1 of 155 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+  3 of 160 functions ( 1.9%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

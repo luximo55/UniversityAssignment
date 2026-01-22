@@ -16,6 +16,11 @@ TransObject::~TransObject()
 	UnloadTexture(objectSprite);
 }
 
+void TransObject::ReinitializeObjects()
+{
+
+}
+
 void TransObject::TexturePick(int choice)
 {
 	switch (choice)
@@ -35,7 +40,7 @@ void TransObject::Draw()
 		DrawTextureV(objectSprite, position, WHITE);
 	else
 		DrawTextureV(objectSprite, goalPos, Color{ 255, 255, 255, 100 });
-	DrawLineV(position, goalPos, RED);
+	//DrawLineV(position, goalPos, RED);
 }
 
 bool TransObject::Collision(Rectangle playerRect, bool isTransformed)

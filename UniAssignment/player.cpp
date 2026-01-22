@@ -36,10 +36,6 @@ void Player::Update()
 		else if (IsKeyDown(KEY_UP))
 			position.y -= speed;
 	}
-	else if (gameover)
-		if(IsKeyReleased(KEY_R))
-			cout << "RESTART";
-			//ADD RESTART FUNCTION
 }
 
 void Player::SpriteChange(Texture2D objectTexture, bool isColliding)

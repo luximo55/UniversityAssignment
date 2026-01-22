@@ -38,6 +38,7 @@ int main()
 	Player player;
 	list<shared_ptr<TransObject>> transObjects = InitializeObjects();
 	double timeCountdown = 100;
+	double currentTime = GetTime() + 10;
 	char timeChar[4];
 	char scoreText[5];
 	const char* goText = "Game over";
@@ -85,18 +86,33 @@ int main()
 		if (IsKeyReleased(KEY_T))
 			player.gameover = true;
 		player.Update();
-		if (timeCountdown <= 0 || player.gameover && !gamePause)
+		if ((timeCountdown <= 0 || player.gameover) && !gamePause)
 		{
-			double score = 0;
-			score = trunc((timeCountdown + 1) * 100 * points);
+			if (!player.gameover)
+				player.gameover = true;
+			double score = 0.1;
+			score = trunc((timeCountdown + 1) * 100 * (points * 2));
 			gamePause = true;
 			cout << "gameover ";
 			snprintf(scoreText, sizeof scoreText, "%.0f", score);
 			EndState(score);
 		}
-		else if(!player.gameover)
+		else if(!player.gameover && !gamePause)
 		{
-			timeCountdown = 10 - GetTime();
+			timeCountdown = currentTime - GetTime();
+		}
+		if (IsKeyReleased(KEY_R) && gamePause && player.gameover)
+		{
+			transObjects.clear();
+			transObjects = InitializeObjects();
+			player.gameover = false;
+			player.isTransformed = false;
+			player.position.x = 100;
+			player.position.y = 100;
+			isColliding = false;
+			gamePause = false;
+			currentTime = GetTime() + 10;
+			points = 0;
 		}
 
 		// --Drawing--

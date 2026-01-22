@@ -14,6 +14,7 @@ class TransObject
 		bool pickupable;
 		Vector2 position;
 		Vector2 goalPos;
+		void ReinitializeObjects();
 	private:
 		void TexturePick(int choice);
 		Rectangle GetRect();
