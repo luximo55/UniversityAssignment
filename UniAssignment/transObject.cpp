@@ -17,11 +17,7 @@ TransObject::~TransObject()
 	UnloadTexture(objectSprite);
 }
 
-void TransObject::ReinitializeObjects()
-{
-
-}
-
+//Allocates three sprites (that represent its state) to an object being initialized
 void TransObject::TexturePick(int choice)
 {
 	switch (choice)
@@ -41,6 +37,7 @@ void TransObject::TexturePick(int choice)
 	}
 }
 
+//Draws a specific sprite depening on the state of the object
 void TransObject::Draw()
 {
 	if (!isPickedUp && pickupable)
@@ -61,6 +58,7 @@ void TransObject::Draw()
 	//DrawLineV(position, goalPos, RED);
 }
 
+//Check if there is collision with the player
 bool TransObject::Collision(Rectangle playerRect, bool isTransformed)
 {
 	if (!isTransformed)
@@ -69,6 +67,7 @@ bool TransObject::Collision(Rectangle playerRect, bool isTransformed)
 		return false;
 }
 
+//Calculates the rect dimensions 
 Rectangle TransObject::GetRect()
 {
 	return Rectangle{ position.x, position.y, float(objectSprite.width*spriteScale), float(objectSprite.height*spriteScale) };

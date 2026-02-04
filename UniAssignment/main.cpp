@@ -8,6 +8,7 @@ using namespace std;
 #include "player.hpp"
 #include "transObject.hpp"
 
+//initializes all objects into a list
 list<shared_ptr<TransObject>> InitializeObjects()
 {
 	auto table = make_shared<TransObject>(0, 650, 100, 400, 550);
@@ -16,6 +17,7 @@ list<shared_ptr<TransObject>> InitializeObjects()
 	return transObjects;
 }
 
+//Checking if the position of object being placed is correct to the final goal position of the object
 bool CheckPlace(shared_ptr<TransObject> to)
 {
 	if (abs(to->position.x - to->goalPos.x) <= 25 && abs(to->position.x - to->goalPos.x) >= 0)
@@ -47,12 +49,15 @@ int main()
 	{
 		// --Events--
 		bool isColliding;
+
 		//Checking collision of each object
 		for (shared_ptr<TransObject> to : transObjects)
 		{
+			//Checking if the player has collided with the object, and is able to be picked up
 			if (to->Collision(player.GetRect(), player.isTransformed) && to->pickupable)
 			{
 				isColliding = true;
+				//Allows the object to be picked up by the player claiming its sprite
 				if (IsKeyReleased(KEY_SPACE) && !player.isTransformed) 
 				{
 					player.SpriteChange(to->ghostSprite, isColliding);
@@ -65,6 +70,7 @@ int main()
 			else
 			{
 				isColliding = false;
+				//Drop the object, and run CheckPlace to check if it is correct
 				if (IsKeyReleased(KEY_SPACE) && player.isTransformed && to->isPickedUp)
 				{
 					player.SpriteChange(to->objectSprite, isColliding);
@@ -84,7 +90,7 @@ int main()
 		if (IsKeyReleased(KEY_T) || timeCountdown <= 0)
 			player.gameover = true;
 		
-		//Game over sequence
+		//Game over sequence (Displays the gameover screen)
 		if (player.gameover && !gamePause)
 		{
 			double score = 0.1;
@@ -92,7 +98,7 @@ int main()
 			gamePause = true;
 			cout << "gameover ";
 			snprintf(scoreText, sizeof scoreText, "%.0f", score);
-			timeCountdown = 1;
+			timeCountdown = 0.01;
 		}
 		//Time countdown
 		else if(!player.gameover && !gamePause)
@@ -116,7 +122,7 @@ int main()
 		BeginDrawing();
 		{
 			//Playable elements
-
+			//Drawing the player and objects
 			for (shared_ptr<TransObject> to : transObjects)
 			{
 				to->Draw();
@@ -127,9 +133,12 @@ int main()
 			//System Drawing
 			ClearBackground(DARKBROWN);
 			DrawFPS(0, 0);
+			
+			//Countdown
 			snprintf(timeChar, sizeof timeChar, "%.3f", timeCountdown);
 			DrawText(timeChar, 100, 0, 20, GREEN);
-
+			
+			//Drawing of the gameover screen
 			if (player.gameover)
 			{
 				DrawText(goText, GetScreenWidth() / 2 - MeasureTextEx(GetFontDefault(), goText, 100, 10).x / 2, 50, 100, GREEN);

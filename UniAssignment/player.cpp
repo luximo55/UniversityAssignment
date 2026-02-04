@@ -4,7 +4,7 @@ using namespace std;
 
 Player::Player()
 {
-	playerSprite = LoadTexture("Sprites/Ghost/move.png");
+	playerSprite = LoadTexture("Sprites/Ghost/Ghost.png");
 	activeSprite = playerSprite;
 	isTransformed = false;
 	gameover = false;
@@ -19,11 +19,13 @@ Player::~Player()
 	UnloadTexture(activeSprite);
 }
 
+//Draws player's texture
 void Player::Draw()
 {
 	DrawTextureEx(activeSprite, position, 0, 5, WHITE);
 }
 
+//Checks user input for movement 
 void Player::Update()
 {
 	if(!gameover)
@@ -39,6 +41,7 @@ void Player::Update()
 	}
 }
 
+//Changes player's sprite if the player has transformed
 void Player::SpriteChange(Texture2D ghostTexture, bool isColliding)
 {
 	if (isColliding)
@@ -47,11 +50,13 @@ void Player::SpriteChange(Texture2D ghostTexture, bool isColliding)
 		activeSprite = playerSprite;
 }
 
+//Calculates the dimensions of the rect
 Rectangle Player::GetRect()
 {
 	return Rectangle{position.x, position.y, float(activeSprite.width*spriteScale), float(activeSprite.height*spriteScale)};
 }
 
+//Visualizes the rect around player
 void Player::DrawHitBox(bool isColliding)
 {
 	if (isColliding)
