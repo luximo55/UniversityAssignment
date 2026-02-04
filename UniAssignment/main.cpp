@@ -26,10 +26,6 @@ bool CheckPlace(shared_ptr<TransObject> to)
 	return true;
 }
 
-void EndState(int score)
-{
-}
-
 int main()
 {
 	InitWindow(1024, 768, "BUas Project");
@@ -51,6 +47,7 @@ int main()
 	{
 		// --Events--
 		bool isColliding;
+		//Checking collision of each object
 		for (shared_ptr<TransObject> to : transObjects)
 		{
 			if (to->Collision(player.GetRect(), player.isTransformed) && to->pickupable)
@@ -58,7 +55,7 @@ int main()
 				isColliding = true;
 				if (IsKeyReleased(KEY_SPACE) && !player.isTransformed) 
 				{
-					player.SpriteChange(to->objectSprite, isColliding);
+					player.SpriteChange(to->ghostSprite, isColliding);
 					player.position = to->position;
 					to->isPickedUp = true;
 					player.isTransformed = true;
@@ -79,30 +76,32 @@ int main()
 				}
 			}
 			if (!player.isTransformed)
-			{
 				to->isPickedUp = false;
-			}
 		}
-		if (IsKeyReleased(KEY_T))
-			player.gameover = true;
 		player.Update();
-		if ((timeCountdown <= 0 || player.gameover) && !gamePause)
+
+		//Game over condition
+		if (IsKeyReleased(KEY_T) || timeCountdown <= 0)
+			player.gameover = true;
+		
+		//Game over sequence
+		if (player.gameover && !gamePause)
 		{
-			if (!player.gameover)
-				player.gameover = true;
 			double score = 0.1;
 			score = trunc((timeCountdown + 1) * 100 * (points * 2));
 			gamePause = true;
 			cout << "gameover ";
 			snprintf(scoreText, sizeof scoreText, "%.0f", score);
-			EndState(score);
+			timeCountdown = 1;
 		}
+		//Time countdown
 		else if(!player.gameover && !gamePause)
-		{
 			timeCountdown = currentTime - GetTime();
-		}
+
+		//Game reset
 		if (IsKeyReleased(KEY_R) && gamePause && player.gameover)
 		{
+			currentTime = GetTime() + 10;
 			transObjects.clear();
 			transObjects = InitializeObjects();
 			player.gameover = false;
@@ -111,10 +110,8 @@ int main()
 			player.position.y = 100;
 			isColliding = false;
 			gamePause = false;
-			currentTime = GetTime() + 10;
 			points = 0;
 		}
-
 		// --Drawing--
 		BeginDrawing();
 		{

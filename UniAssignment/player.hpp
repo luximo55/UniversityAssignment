@@ -10,7 +10,7 @@ class Player
 		void Update();
 		Rectangle GetRect();
 		void DrawHitBox(bool isColliding);
-		void SpriteChange(Texture2D objectTexture, bool isColliding);
+		void SpriteChange(Texture2D ghostTexture, bool isColliding);
 		bool isTransformed;
 		Vector2 position;
 		bool gameover;
@@ -18,4 +18,5 @@ class Player
 		Texture2D activeSprite;
 		Texture2D playerSprite;
 		int speed;
+		int spriteScale;
 };

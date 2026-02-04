@@ -4,13 +4,14 @@ using namespace std;
 
 Player::Player()
 {
-	playerSprite = LoadTexture("Sprites/player.png");
+	playerSprite = LoadTexture("Sprites/Ghost/move.png");
 	activeSprite = playerSprite;
 	isTransformed = false;
 	gameover = false;
 	position.x = 100;
 	position.y = 100;
 	speed = 5;
+	spriteScale = 5;
 }
 
 Player::~Player()
@@ -20,7 +21,7 @@ Player::~Player()
 
 void Player::Draw()
 {
-	DrawTextureV(activeSprite, position, WHITE);
+	DrawTextureEx(activeSprite, position, 0, 5, WHITE);
 }
 
 void Player::Update()
@@ -38,17 +39,17 @@ void Player::Update()
 	}
 }
 
-void Player::SpriteChange(Texture2D objectTexture, bool isColliding)
+void Player::SpriteChange(Texture2D ghostTexture, bool isColliding)
 {
 	if (isColliding)
-		activeSprite = objectTexture;
+		activeSprite = ghostTexture;
 	else
 		activeSprite = playerSprite;
 }
 
 Rectangle Player::GetRect()
 {
-	return Rectangle{position.x, position.y, float(activeSprite.width), float(activeSprite.height)};
+	return Rectangle{position.x, position.y, float(activeSprite.width*spriteScale), float(activeSprite.height*spriteScale)};
 }
 
 void Player::DrawHitBox(bool isColliding)

@@ -9,6 +9,9 @@ class TransObject
 		~TransObject();
 		void Draw();
 		Texture2D objectSprite;
+		Texture2D wreckSprite;
+		Texture2D ghostSprite;
+		Texture2D cleanSprite;
 		bool Collision(Rectangle playerRect, bool isTransformed);
 		bool isPickedUp;
 		bool pickupable;
@@ -19,4 +22,5 @@ class TransObject
 		void TexturePick(int choice);
 		Rectangle GetRect();
 		Texture2D sprites[10];
+		int spriteScale;
 };
