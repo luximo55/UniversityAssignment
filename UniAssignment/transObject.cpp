@@ -9,7 +9,7 @@ TransObject::TransObject(int choice, int posX, int posY, int goalX, int goalY)
 	position.y = posY;
 	goalPos.x = goalX;
 	goalPos.y = goalY;
-	spriteScale = 5;
+	spriteScale = 4;
 }
 
 TransObject::~TransObject()

@@ -20,7 +20,7 @@ list<shared_ptr<TransObject>> InitializeObjects()
 //Checking if the position of object being placed is correct to the final goal position of the object
 bool CheckPlace(shared_ptr<TransObject> to)
 {
-	if (abs(to->position.x - to->goalPos.x) <= 25 && abs(to->position.x - to->goalPos.x) >= 0)
+	if (abs(to->position.x - to->goalPos.x) <= 35 && abs(to->position.x - to->goalPos.x) >= 0)
 	{
 		to->position = to->goalPos;
 		return false;
@@ -57,8 +57,8 @@ int main()
 			if (to->Collision(player.GetRect(), player.isTransformed) && to->pickupable)
 			{
 				isColliding = true;
-				//Allows the object to be picked up by the player claiming its sprite
-				if (IsKeyReleased(KEY_SPACE) && !player.isTransformed) 
+				//Allows the object to be picked up by player claiming its sprite
+				if (IsKeyReleased(KEY_SPACE) && !player.isTransformed)
 				{
 					player.SpriteChange(to->ghostSprite, isColliding);
 					player.position = to->position;

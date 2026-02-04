@@ -11,7 +11,7 @@ Player::Player()
 	position.x = 100;
 	position.y = 100;
 	speed = 5;
-	spriteScale = 5;
+	spriteScale = 4;
 }
 
 Player::~Player()
@@ -22,7 +22,7 @@ Player::~Player()
 //Draws player's texture
 void Player::Draw()
 {
-	DrawTextureEx(activeSprite, position, 0, 5, WHITE);
+	DrawTextureEx(activeSprite, position, 0, spriteScale, WHITE);
 }
 
 //Checks user input for movement 
