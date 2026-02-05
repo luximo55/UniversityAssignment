@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\transObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\transObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\player.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\player.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\transObject.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\transObject.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\player.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\player.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\transObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9CF85973-AEC5-4702-9351-A71D4790FDE3}|UniAssignment\\UniAssignment.vcxproj|solutionrelative:UniAssignment\\transObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,43 +30,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 245,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "player.cpp",
               "DocumentMoniker": "C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\player.cpp",
               "RelativeDocumentMoniker": "UniAssignment\\player.cpp",
               "ToolTip": "C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\player.cpp",
               "RelativeToolTip": "UniAssignment\\player.cpp",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABgAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-13T15:29:23.355Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "transObject.cpp",
               "DocumentMoniker": "C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\transObject.cpp",
               "RelativeDocumentMoniker": "UniAssignment\\transObject.cpp",
               "ToolTip": "C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\transObject.cpp",
               "RelativeToolTip": "UniAssignment\\transObject.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-12T16:31:43.4Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\main.cpp",
               "RelativeDocumentMoniker": "UniAssignment\\main.cpp",
               "ToolTip": "C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\main.cpp",
               "RelativeToolTip": "UniAssignment\\main.cpp",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAowHQAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-01-12T15:24:16.751Z",
               "EditorCaption": ""
@@ -75,19 +75,20 @@
         },
         {
           "DockedWidth": 155,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "player.hpp",
               "DocumentMoniker": "C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\player.hpp",
               "RelativeDocumentMoniker": "UniAssignment\\player.hpp",
               "ToolTip": "C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\player.hpp",
               "RelativeToolTip": "UniAssignment\\player.hpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-01-12T16:01:44.27Z"
+              "WhenOpened": "2026-01-12T16:01:44.27Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -97,7 +98,7 @@
               "RelativeDocumentMoniker": "UniAssignment\\transObject.hpp",
               "ToolTip": "C:\\Users\\luxim\\Documents\\GitHub\\UniversityAssignment\\UniAssignment\\transObject.hpp",
               "RelativeToolTip": "UniAssignment\\transObject.hpp",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAUwBgAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAUwBgAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-01-12T16:28:47.237Z",
               "EditorCaption": ""

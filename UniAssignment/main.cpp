@@ -13,7 +13,10 @@ list<shared_ptr<TransObject>> InitializeObjects()
 {
 	auto table = make_shared<TransObject>(0, 650, 100, 400, 550);
 	auto tv = make_shared<TransObject>(1, 100, 450, 450, 300);
-	list<shared_ptr<TransObject>> transObjects = { table, tv };
+	auto desk = make_shared<TransObject>(2, 231, 412, 457, 635);
+	auto closet = make_shared<TransObject>(3, 742, 432, 342, 600);
+	auto bed = make_shared<TransObject>(4, 900, 600, 231, 311);
+	list<shared_ptr<TransObject>> transObjects = { table, tv, desk, closet, bed};
 	return transObjects;
 }
 
@@ -33,10 +36,14 @@ int main()
 	InitWindow(1024, 768, "BUas Project");
 	SetTargetFPS(60);
 
+	Texture2D background = LoadTexture("Sprites/Background/background.png");
+	Vector2 zero;
+	zero.x = 0;
+	zero.y = 0;
 	Player player;
 	list<shared_ptr<TransObject>> transObjects = InitializeObjects();
-	double timeCountdown = 100;
-	double currentTime = GetTime() + 10;
+	double timeCountdown = 20;
+	double currentTime = GetTime() + timeCountdown;
 	char timeChar[4];
 	char scoreText[5];
 	const char* goText = "Game over";
@@ -107,11 +114,12 @@ int main()
 		//Game reset
 		if (IsKeyReleased(KEY_R) && gamePause && player.gameover)
 		{
-			currentTime = GetTime() + 10;
+			currentTime = GetTime() + 20;
 			transObjects.clear();
 			transObjects = InitializeObjects();
 			player.gameover = false;
 			player.isTransformed = false;
+			player.activeSprite = player.playerSprite;
 			player.position.x = 100;
 			player.position.y = 100;
 			isColliding = false;
@@ -121,6 +129,9 @@ int main()
 		// --Drawing--
 		BeginDrawing();
 		{
+			//Background
+			DrawTextureEx(background, zero, 0, 4, WHITE);
+
 			//Playable elements
 			//Drawing the player and objects
 			for (shared_ptr<TransObject> to : transObjects)

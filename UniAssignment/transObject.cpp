@@ -9,7 +9,7 @@ TransObject::TransObject(int choice, int posX, int posY, int goalX, int goalY)
 	position.y = posY;
 	goalPos.x = goalX;
 	goalPos.y = goalY;
-	spriteScale = 4;
+	spriteScale = 5;
 }
 
 TransObject::~TransObject()
@@ -32,6 +32,24 @@ void TransObject::TexturePick(int choice)
 			wreckSprite = LoadTexture("Sprites/TV/wreck.png");
 			ghostSprite = LoadTexture("Sprites/TV/ghost.png");
 			cleanSprite = LoadTexture("Sprites/TV/clean.png");
+			objectSprite = wreckSprite;
+			break;
+		case 2:
+			wreckSprite = LoadTexture("Sprites/Desk/wreck.png");
+			ghostSprite = LoadTexture("Sprites/Desk/ghost.png");
+			cleanSprite = LoadTexture("Sprites/Desk/clean.png");
+			objectSprite = wreckSprite;
+			break;
+		case 3:
+			wreckSprite = LoadTexture("Sprites/Closet/wreck.png");
+			ghostSprite = LoadTexture("Sprites/Closet/ghost.png");
+			cleanSprite = LoadTexture("Sprites/Closet/clean.png");
+			objectSprite = wreckSprite;
+			break;
+		case 4:
+			wreckSprite = LoadTexture("Sprites/Bed/wreck.png");
+			ghostSprite = LoadTexture("Sprites/Bed/ghost.png");
+			cleanSprite = LoadTexture("Sprites/Bed/clean.png");
 			objectSprite = wreckSprite;
 			break;
 	}
