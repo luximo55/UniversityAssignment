@@ -7,6 +7,7 @@ using namespace std;
 #include "raylib.h"
 #include "player.hpp"
 #include "transObject.hpp"
+#include "audio.hpp"
 
 //initializes all objects into a list
 list<shared_ptr<TransObject>> InitializeObjects()
@@ -35,21 +36,29 @@ int main()
 {
 	InitWindow(1024, 768, "BUas Project");
 	SetTargetFPS(60);
-
+	
+	//Graphics
 	Texture2D background = LoadTexture("Sprites/Background/background.png");
 	Vector2 zero;
 	zero.x = 0;
 	zero.y = 0;
-	Player player;
-	list<shared_ptr<TransObject>> transObjects = InitializeObjects();
-	double timeCountdown = 20;
-	double currentTime = GetTime() + timeCountdown;
 	char timeChar[4];
 	char scoreText[5];
 	const char* goText = "Game over";
 	const char* restartText = "Press 'R' to try again";
+
+	//Objects
+	Player player;
+	list<shared_ptr<TransObject>> transObjects = InitializeObjects();
+
+	//Logic - time, score
+	double timeCountdown = 20;
+	double currentTime = GetTime() + timeCountdown;
 	bool gamePause = false;
 	int points = 0;
+	
+	//Audio
+	Audio audio;
 
 	// --Game loop--
 	while(WindowShouldClose() == false)
@@ -126,6 +135,13 @@ int main()
 			gamePause = false;
 			points = 0;
 		}
+
+		// --Audio Playback--
+		if (!IsSoundPlaying(audio.music))
+		{
+			audio.PlayAudio();
+		}
+
 		// --Drawing--
 		BeginDrawing();
 		{
