@@ -67,39 +67,43 @@ int main()
 		// --Events--
 		bool isColliding;
 
-		//Checking collision of each object
-		for (shared_ptr<TransObject> to : transObjects)
+		//Check game state before calculation
+		if (!player.gameover)
 		{
-			//Checking if the object has collided with player, and is able to be picked up
-			if (to->Collision(player.GetRect(), player.isTransformed) && to->pickupable)
+			//Checking collision of each object
+			for (shared_ptr<TransObject> to : transObjects)
 			{
-				isColliding = true;
-				//Allows the object to be picked up by setting object's ghost sprite as players active sprite
-				if (IsKeyReleased(KEY_SPACE) && !player.isTransformed)
+				//Checking if the object has collided with player, and is able to be picked up
+				if (to->Collision(player.GetRect(), player.isTransformed) && to->pickupable)
 				{
-					player.SpriteChange(to->ghostSprite, isColliding);
-					player.position = to->position;
-					to->isPickedUp = true;
-					player.isTransformed = true;
+					isColliding = true;
+					//Allows the object to be picked up by setting object's ghost sprite as players active sprite
+					if (IsKeyReleased(KEY_SPACE) && !player.isTransformed)
+					{
+						player.SpriteChange(to->ghostSprite, isColliding);
+						player.position = to->position;
+						to->isPickedUp = true;
+						player.isTransformed = true;
+					}
+					break;
 				}
-				break;
-			}
-			else
-			{
-				isColliding = false;
-				//Drop the object, and check if it's in the correct position, if so lock it and add points
-				if (IsKeyReleased(KEY_SPACE) && player.isTransformed && to->isPickedUp)
+				else
 				{
-					player.SpriteChange(to->objectSprite, isColliding);
-					to->position = player.position;
-					player.isTransformed = false;
-					to->pickupable = CheckPlace(to);
-					if (to->pickupable == false)
-						points++;
+					isColliding = false;
+					//Drop the object, and check if it's in the correct position, if so lock it and add points
+					if (IsKeyReleased(KEY_SPACE) && player.isTransformed && to->isPickedUp)
+					{
+						player.SpriteChange(to->objectSprite, isColliding);
+						to->position = player.position;
+						player.isTransformed = false;
+						to->pickupable = CheckPlace(to);
+						if (to->pickupable == false)
+							points++;
+					}
 				}
+				if (!player.isTransformed)
+					to->isPickedUp = false;
 			}
-			if (!player.isTransformed)
-				to->isPickedUp = false;
 		}
 		player.Update();
 
@@ -160,11 +164,10 @@ int main()
 
 			//System Drawing
 			ClearBackground(DARKBROWN);
-			DrawFPS(0, 0);
 			
 			//Countdown
 			snprintf(timeChar, sizeof timeChar, "%.3f", timeCountdown);
-			DrawText(timeChar, 100, 0, 20, GREEN);
+			DrawText(timeChar, 70, 0, 64, WHITE);
 			
 			//Drawing of the gameover screen
 			if (player.gameover)
