@@ -151,7 +151,7 @@ int main()
 		BeginDrawing();
 		{
 			//Background
-			DrawTextureEx(background, zero, 0, 4, WHITE);
+			DrawTextureEx(background, zero, 0, 8, WHITE);
 
 			//Playable elements
 			//Drawing the player and objects

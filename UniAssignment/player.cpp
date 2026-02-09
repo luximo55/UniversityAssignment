@@ -11,7 +11,7 @@ Player::Player()
 	position.x = 100;
 	position.y = 100;
 	speed = 5;
-	spriteScale = 6;
+	spriteScale = 8;
 }
 
 Player::~Player()
