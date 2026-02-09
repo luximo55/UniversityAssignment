@@ -34,6 +34,7 @@ bool CheckPlace(shared_ptr<TransObject> to)
 
 int main()
 {
+	//Window initialization
 	InitWindow(1024, 768, "BUas Project");
 	SetTargetFPS(60);
 	
@@ -50,12 +51,12 @@ int main()
 	//Objects
 	Player player;
 	list<shared_ptr<TransObject>> transObjects = InitializeObjects();
-
+	
 	//Logic - time, score
 	double timeCountdown = 20;
 	double currentTime = GetTime() + timeCountdown;
 	bool gamePause = false;
-	int points = 0;
+	int points = 0;	
 	
 	//Audio
 	Audio audio;
@@ -69,11 +70,11 @@ int main()
 		//Checking collision of each object
 		for (shared_ptr<TransObject> to : transObjects)
 		{
-			//Checking if the player has collided with the object, and is able to be picked up
+			//Checking if the object has collided with player, and is able to be picked up
 			if (to->Collision(player.GetRect(), player.isTransformed) && to->pickupable)
 			{
 				isColliding = true;
-				//Allows the object to be picked up by player claiming its sprite
+				//Allows the object to be picked up by setting object's ghost sprite as players active sprite
 				if (IsKeyReleased(KEY_SPACE) && !player.isTransformed)
 				{
 					player.SpriteChange(to->ghostSprite, isColliding);
@@ -86,7 +87,7 @@ int main()
 			else
 			{
 				isColliding = false;
-				//Drop the object, and run CheckPlace to check if it is correct
+				//Drop the object, and check if it's in the correct position, if so lock it and add points
 				if (IsKeyReleased(KEY_SPACE) && player.isTransformed && to->isPickedUp)
 				{
 					player.SpriteChange(to->objectSprite, isColliding);
@@ -103,7 +104,7 @@ int main()
 		player.Update();
 
 		//Game over condition
-		if (IsKeyReleased(KEY_T) || timeCountdown <= 0)
+		if (IsKeyReleased(KEY_T) || timeCountdown <= 0 || points >= transObjects.size())
 			player.gameover = true;
 		
 		//Game over sequence (Displays the gameover screen)

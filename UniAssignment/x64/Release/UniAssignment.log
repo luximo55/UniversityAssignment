@@ -1,10 +1,12 @@
-﻿  main.cpp
-C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(171,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(172,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(173,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+﻿  audio.cpp
+  main.cpp
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\audio.cpp(12,6): warning C4551: function call missing argument list
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(172,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(173,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(174,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Generating code
-  1 of 162 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
+  2 of 163 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   UniAssignment.vcxproj -> C:\Users\luxim\Documents\GitHub\UniversityAssignment\x64\Release\UniAssignment.exe
