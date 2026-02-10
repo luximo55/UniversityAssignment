@@ -12,12 +12,15 @@ using namespace std;
 //initializes all objects into a list
 list<shared_ptr<TransObject>> InitializeObjects()
 {
-	auto table = make_shared<TransObject>(0, 650, 100, 400, 550);
-	auto tv = make_shared<TransObject>(1, 100, 450, 450, 300);
-	auto desk = make_shared<TransObject>(2, 231, 412, 457, 635);
-	auto closet = make_shared<TransObject>(3, 742, 432, 342, 600);
-	auto bed = make_shared<TransObject>(4, 900, 600, 231, 311);
-	list<shared_ptr<TransObject>> transObjects = { table, tv, desk, closet, bed};
+	auto table = make_shared<TransObject>(0, 650, 100, 0, 496);
+	auto tv = make_shared<TransObject>(1, 100, 450, 885, 624);
+	auto desk = make_shared<TransObject>(2, 231, 412, 40, 112);
+	auto closet = make_shared<TransObject>(3, 742, 432, 650, 112);
+	auto bed = make_shared<TransObject>(4, 900, 600, 775, 240);
+	auto couch = make_shared<TransObject>(5, 100, 320, 640, 624);
+	auto chair1 = make_shared<TransObject>(6, 230, 320, 230, 495);
+	auto chair2 = make_shared<TransObject>(6, 430, 320, 175, 112);
+	list<shared_ptr<TransObject>> transObjects = { table, tv, desk, closet, bed, couch, chair1, chair2};
 	return transObjects;
 }
 
@@ -53,7 +56,7 @@ int main()
 	list<shared_ptr<TransObject>> transObjects = InitializeObjects();
 	
 	//Logic - time, score
-	double timeCountdown = 20;
+	double timeCountdown = 50;
 	double currentTime = GetTime() + timeCountdown;
 	bool gamePause = false;
 	int points = 0;	
@@ -128,7 +131,7 @@ int main()
 		//Game reset
 		if (IsKeyReleased(KEY_R) && gamePause && player.gameover)
 		{
-			currentTime = GetTime() + 20;
+			currentTime = GetTime() + 50;
 			transObjects.clear();
 			transObjects = InitializeObjects();
 			player.gameover = false;
@@ -162,6 +165,12 @@ int main()
 			player.Draw();
 			player.DrawHitBox(isColliding);
 
+			char bufX[10];
+			snprintf(bufX, sizeof bufX, "%.0f", player.position.x);
+			DrawText(bufX, 500,0,30,RED);
+			char bufY[10];
+			snprintf(bufY, sizeof bufY, "%.0f", player.position.y);
+			DrawText(bufY, 600, 0, 30, RED);
 			//System Drawing
 			ClearBackground(DARKBROWN);
 			

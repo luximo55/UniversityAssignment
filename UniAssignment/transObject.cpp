@@ -52,6 +52,18 @@ void TransObject::TexturePick(int choice)
 			cleanSprite = LoadTexture("Sprites/Bed/clean.png");
 			objectSprite = wreckSprite;
 			break;
+		case 5:
+			wreckSprite = LoadTexture("Sprites/Couch/wreck.png");
+			ghostSprite = LoadTexture("Sprites/Couch/ghost.png");
+			cleanSprite = LoadTexture("Sprites/Couch/clean.png");
+			objectSprite = wreckSprite;
+			break;
+		case 6:
+			wreckSprite = LoadTexture("Sprites/Chair/wreck.png");
+			ghostSprite = LoadTexture("Sprites/Chair/ghost.png");
+			cleanSprite = LoadTexture("Sprites/Chair/clean.png");
+			objectSprite = wreckSprite;
+			break;
 	}
 }
 
