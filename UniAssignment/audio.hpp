@@ -7,6 +7,10 @@ class Audio
 		Audio();
 		~Audio();
 		void PlayAudio();
+		void PlaySFX(Sound sound);
 		Sound music;
-	private:
+		Sound win;
+		Sound lose;
+		Sound transIn;
+		Sound transOut;
 };

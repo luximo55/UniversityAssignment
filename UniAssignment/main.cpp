@@ -83,6 +83,7 @@ int main()
 					//Allows the object to be picked up by setting object's ghost sprite as players active sprite
 					if (IsKeyReleased(KEY_SPACE) && !player.isTransformed)
 					{
+						audio.PlaySFX(audio.transIn);
 						player.SpriteChange(to->ghostSprite, isColliding);
 						player.position = to->position;
 						to->isPickedUp = true;
@@ -96,6 +97,7 @@ int main()
 					//Drop the object, and check if it's in the correct position, if so lock it and add points
 					if (IsKeyReleased(KEY_SPACE) && player.isTransformed && to->isPickedUp)
 					{
+						audio.PlaySFX(audio.transOut);
 						player.SpriteChange(to->objectSprite, isColliding);
 						to->position = player.position;
 						player.isTransformed = false;
@@ -117,6 +119,10 @@ int main()
 		//Game over sequence (Displays the gameover screen)
 		if (player.gameover && !gamePause)
 		{
+			if (points >= transObjects.size())
+				audio.PlaySFX(audio.win);
+			else
+				audio.PlaySFX(audio.lose);
 			double score = 0.1;
 			score = trunc((timeCountdown + 1) * 100 * (points * 2));
 			gamePause = true;
@@ -146,9 +152,7 @@ int main()
 
 		// --Audio Playback--
 		if (!IsSoundPlaying(audio.music))
-		{
 			audio.PlayAudio();
-		}
 
 		// --Drawing--
 		BeginDrawing();
@@ -165,12 +169,14 @@ int main()
 			player.Draw();
 			player.DrawHitBox(isColliding);
 
+			//Remove this-------------------------------------------------------------------------------------<
 			char bufX[10];
 			snprintf(bufX, sizeof bufX, "%.0f", player.position.x);
 			DrawText(bufX, 500,0,30,RED);
 			char bufY[10];
 			snprintf(bufY, sizeof bufY, "%.0f", player.position.y);
 			DrawText(bufY, 600, 0, 30, RED);
+
 			//System Drawing
 			ClearBackground(DARKBROWN);
 			
