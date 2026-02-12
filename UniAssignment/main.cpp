@@ -12,22 +12,22 @@ using namespace std;
 //initializes all objects into a list
 list<shared_ptr<TransObject>> InitializeObjects()
 {
-	auto table = make_shared<TransObject>(0, 650, 100, 0, 496);
-	auto tv = make_shared<TransObject>(1, 100, 450, 885, 624);
-	auto desk = make_shared<TransObject>(2, 231, 412, 40, 112);
-	auto closet = make_shared<TransObject>(3, 742, 432, 650, 112);
-	auto bed = make_shared<TransObject>(4, 900, 600, 775, 240);
-	auto couch = make_shared<TransObject>(5, 100, 320, 640, 624);
-	auto chair1 = make_shared<TransObject>(6, 230, 320, 230, 495);
-	auto chair2 = make_shared<TransObject>(6, 430, 320, 175, 112);
+	auto table = make_shared<TransObject>("Table", 630, 496, 0, 496);
+	auto tv = make_shared<TransObject>("TV", 415, 240, 885, 624);
+	auto desk = make_shared<TransObject>("Desk", 655, 112, 40, 112);
+	auto closet = make_shared<TransObject>("Closet", 400, 496, 650, 112);
+	auto bed = make_shared<TransObject>("Bed", 40, 624, 775, 240);
+	auto couch = make_shared<TransObject>("Couch", 65, 240, 640, 624);
+	auto chair1 = make_shared<TransObject>("Chair", 890, 112, 230, 495);
+	auto chair2 = make_shared<TransObject>("Chair", 875, 496, 175, 112);
 	list<shared_ptr<TransObject>> transObjects = { table, tv, desk, closet, bed, couch, chair1, chair2};
 	return transObjects;
 }
 
-//Checking if the position of object being placed is correct to the final goal position of the object
+//Checking if the position of the object being placed is close to its goal position
 bool CheckPlace(shared_ptr<TransObject> to)
 {
-	if (abs(to->position.x - to->goalPos.x) <= 35 && abs(to->position.x - to->goalPos.x) >= 0)
+	if (abs(to->position.x - to->goalPos.x) <= 30 && abs(to->position.y - to->goalPos.y) <= 40)
 	{
 		to->position = to->goalPos;
 		return false;
@@ -37,11 +37,11 @@ bool CheckPlace(shared_ptr<TransObject> to)
 
 int main()
 {
-	//Window initialization
+	// --Window initialization--
 	InitWindow(1024, 768, "BUas Project");
 	SetTargetFPS(60);
 	
-	//Graphics
+	// --Graphics--
 	Texture2D background = LoadTexture("Sprites/Background/background.png");
 	Vector2 zero;
 	zero.x = 0;
@@ -51,17 +51,17 @@ int main()
 	const char* goText = "Game over";
 	const char* restartText = "Press 'R' to try again";
 
-	//Objects
+	// --Objects--
 	Player player;
 	list<shared_ptr<TransObject>> transObjects = InitializeObjects();
 	
-	//Logic - time, score
+	// --Logic - time, score--
 	double timeCountdown = 50;
 	double currentTime = GetTime() + timeCountdown;
 	bool gamePause = false;
 	int points = 0;	
 	
-	//Audio
+	// --Audio--
 	Audio audio;
 
 	// --Game loop--
@@ -70,7 +70,6 @@ int main()
 		// --Events--
 		bool isColliding;
 
-		//Check game state before calculation
 		if (!player.gameover)
 		{
 			//Checking collision of each object
@@ -167,7 +166,6 @@ int main()
 				to->Draw();
 			}
 			player.Draw();
-			player.DrawHitBox(isColliding);
 
 			//Remove this-------------------------------------------------------------------------------------<
 			char bufX[10];
@@ -187,9 +185,9 @@ int main()
 			//Drawing of the gameover screen
 			if (player.gameover)
 			{
-				DrawText(goText, GetScreenWidth() / 2 - MeasureTextEx(GetFontDefault(), goText, 100, 10).x / 2, 50, 100, GREEN);
-				DrawText(scoreText, GetScreenWidth()/2 - MeasureTextEx(GetFontDefault(), scoreText, 100, 10).x/2, 150, 100, GREEN);
-				DrawText(restartText, GetScreenWidth() / 2 - MeasureTextEx(GetFontDefault(), restartText, 70, 7).x / 2, 600, 70, GREEN);
+				DrawText(goText, GetScreenWidth() / 2 - MeasureTextEx(GetFontDefault(), goText, 100, 10).x / 2, 50, 100, GOLD);
+				DrawText(scoreText, GetScreenWidth()/2 - MeasureTextEx(GetFontDefault(), scoreText, 100, 10).x/2, 150, 100, GOLD);
+				DrawText(restartText, GetScreenWidth() / 2 - MeasureTextEx(GetFontDefault(), restartText, 70, 7).x / 2, 670, 70, GOLD);
 			}
 
 		}

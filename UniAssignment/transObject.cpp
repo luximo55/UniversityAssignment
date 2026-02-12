@@ -1,8 +1,9 @@
 #include "transObject.hpp"
+using namespace std;
 
-TransObject::TransObject(int choice, int posX, int posY, int goalX, int goalY)
+TransObject::TransObject(string choice, int posX, int posY, int goalX, int goalY)
 {
-	TexturePick(choice);
+	spritePath = "Sprites/";
 	isPickedUp = false;
 	pickupable = true;
 	position.x = posX;
@@ -10,6 +11,7 @@ TransObject::TransObject(int choice, int posX, int posY, int goalX, int goalY)
 	goalPos.x = goalX;
 	goalPos.y = goalY;
 	spriteScale = 8;
+	TexturePick(choice);
 }
 
 TransObject::~TransObject()
@@ -18,53 +20,23 @@ TransObject::~TransObject()
 }
 
 //Allocates three sprites (that represent its state) to an object being initialized
-void TransObject::TexturePick(int choice)
+//Makes combination for sprite paths e.g. Sprites/Table/wreck.png
+void TransObject::TexturePick(string choice)
 {
-	switch (choice)
-	{
-		case 0:
-			wreckSprite = LoadTexture("Sprites/Table/wreck.png");
-			ghostSprite = LoadTexture("Sprites/Table/ghost.png"); 
-			cleanSprite = LoadTexture("Sprites/Table/clean.png");
-			objectSprite = wreckSprite;
-			break;
-		case 1:
-			wreckSprite = LoadTexture("Sprites/TV/wreck.png");
-			ghostSprite = LoadTexture("Sprites/TV/ghost.png");
-			cleanSprite = LoadTexture("Sprites/TV/clean.png");
-			objectSprite = wreckSprite;
-			break;
-		case 2:
-			wreckSprite = LoadTexture("Sprites/Desk/wreck.png");
-			ghostSprite = LoadTexture("Sprites/Desk/ghost.png");
-			cleanSprite = LoadTexture("Sprites/Desk/clean.png");
-			objectSprite = wreckSprite;
-			break;
-		case 3:
-			wreckSprite = LoadTexture("Sprites/Closet/wreck.png");
-			ghostSprite = LoadTexture("Sprites/Closet/ghost.png");
-			cleanSprite = LoadTexture("Sprites/Closet/clean.png");
-			objectSprite = wreckSprite;
-			break;
-		case 4:
-			wreckSprite = LoadTexture("Sprites/Bed/wreck.png");
-			ghostSprite = LoadTexture("Sprites/Bed/ghost.png");
-			cleanSprite = LoadTexture("Sprites/Bed/clean.png");
-			objectSprite = wreckSprite;
-			break;
-		case 5:
-			wreckSprite = LoadTexture("Sprites/Couch/wreck.png");
-			ghostSprite = LoadTexture("Sprites/Couch/ghost.png");
-			cleanSprite = LoadTexture("Sprites/Couch/clean.png");
-			objectSprite = wreckSprite;
-			break;
-		case 6:
-			wreckSprite = LoadTexture("Sprites/Chair/wreck.png");
-			ghostSprite = LoadTexture("Sprites/Chair/ghost.png");
-			cleanSprite = LoadTexture("Sprites/Chair/clean.png");
-			objectSprite = wreckSprite;
-			break;
-	}
+	spritePath.insert(spritePath.size(), choice);
+	int pathSizeIndex = spritePath.size();
+	
+	sprite = spritePath.insert(spritePath.size(), "/wreck.png").c_str();
+	wreckSprite = LoadTexture(sprite);
+	//erase is used to reset to the path of sprites e.g. Sprites/Table/wreck.png -> Sprites/Table
+	spritePath.erase(pathSizeIndex, 10);
+	//then another sprite is added to the path
+	sprite = spritePath.insert(spritePath.size(), "/ghost.png").c_str();
+	ghostSprite = LoadTexture(sprite);
+	spritePath.erase(pathSizeIndex, 10);
+
+	sprite = spritePath.insert(spritePath.size(), "/clean.png").c_str();
+	cleanSprite = LoadTexture(sprite);
 }
 
 //Draws a specific sprite depening on the state of the object
@@ -85,7 +57,6 @@ void TransObject::Draw()
 		objectSprite = cleanSprite;
 		DrawTextureEx(objectSprite, goalPos, 0, spriteScale, Color{ 255, 255, 255, 100 });
 	}
-	//DrawLineV(position, goalPos, RED);
 }
 
 //Check if there is collision with the player

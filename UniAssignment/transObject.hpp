@@ -1,11 +1,14 @@
 #pragma once
 #include <raylib.h>
 #include "player.hpp"
+#include <iostream>
+#include <string>
+using namespace std;
 
 class TransObject
 {
 	public:
-		TransObject(int choice, int posX, int posY, int goalX, int goalY);
+		TransObject(string choice, int posX, int posY, int goalX, int goalY);
 		~TransObject();
 		void Draw();
 		Texture2D objectSprite;
@@ -19,8 +22,10 @@ class TransObject
 		Vector2 goalPos;
 		void ReinitializeObjects();
 	private:
-		void TexturePick(int choice);
+		void TexturePick(string choice);
 		Rectangle GetRect();
 		Texture2D sprites[10];
 		int spriteScale;
+		string spritePath;
+		const char* sprite;
 };
