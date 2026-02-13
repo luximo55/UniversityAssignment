@@ -19,13 +19,11 @@ Player::~Player()
 	UnloadTexture(activeSprite);
 }
 
-//Draws player's texture
 void Player::Draw()
 {
 	DrawTextureEx(activeSprite, position, 0, spriteScale, WHITE);
 }
 
-//Checks user input for movement 
 void Player::Update()
 {
 	if(!gameover)
@@ -41,7 +39,7 @@ void Player::Update()
 	}
 }
 
-//Changes player's sprite if the player has transformed
+//Change player's sprite to object's ghost sprite if the player has transformed
 void Player::SpriteChange(Texture2D ghostTexture, bool isColliding)
 {
 	if (isColliding)
@@ -50,15 +48,8 @@ void Player::SpriteChange(Texture2D ghostTexture, bool isColliding)
 		activeSprite = playerSprite;
 }
 
-//Calculates the dimensions of the rect
+//Calculate rect for collisions in transObject.cpp
 Rectangle Player::GetRect()
 {
 	return Rectangle{position.x, position.y, float(activeSprite.width*spriteScale), float(activeSprite.height*spriteScale)};
-}
-
-//Visualizes the rect around player
-void Player::DrawHitBox(bool isColliding)
-{
-	if (isColliding)
-		DrawRectangleLinesEx(GetRect(), 3, RED);
 }

@@ -9,7 +9,7 @@ using namespace std;
 #include "transObject.hpp"
 #include "audio.hpp"
 
-//initializes all objects into a list
+//Initialize all objects into a list
 list<shared_ptr<TransObject>> InitializeObjects()
 {
 	auto table = make_shared<TransObject>("Table", 630, 496, 0, 496);
@@ -24,7 +24,9 @@ list<shared_ptr<TransObject>> InitializeObjects()
 	return transObjects;
 }
 
-//Checking if the position of the object being placed is close to its goal position
+//Check if the position of the object is close to goal position
+/*Collisions could have been used, however this makes it so that the object has to be,
+more or less, exactly on the goal position and not simply touching the collider*/
 bool CheckPlace(shared_ptr<TransObject> to)
 {
 	if (abs(to->position.x - to->goalPos.x) <= 30 && abs(to->position.y - to->goalPos.y) <= 40)
@@ -72,14 +74,12 @@ int main()
 
 		if (!player.gameover)
 		{
-			//Checking collision of each object
 			for (shared_ptr<TransObject> to : transObjects)
 			{
-				//Checking if the object has collided with player, and is able to be picked up
 				if (to->Collision(player.GetRect(), player.isTransformed) && to->pickupable)
 				{
 					isColliding = true;
-					//Allows the object to be picked up by setting object's ghost sprite as players active sprite
+					//Set properties when player is transformed
 					if (IsKeyReleased(KEY_SPACE) && !player.isTransformed)
 					{
 						audio.PlaySFX(audio.transIn);
@@ -93,7 +93,7 @@ int main()
 				else
 				{
 					isColliding = false;
-					//Drop the object, and check if it's in the correct position, if so lock it and add points
+					//Sets properties when player transfroms out of the object; adds points if at correct place
 					if (IsKeyReleased(KEY_SPACE) && player.isTransformed && to->isPickedUp)
 					{
 						audio.PlaySFX(audio.transOut);
@@ -111,11 +111,11 @@ int main()
 		}
 		player.Update();
 
-		//Game over condition
+		//Game over conditions
 		if (IsKeyReleased(KEY_T) || timeCountdown <= 0 || points >= transObjects.size())
 			player.gameover = true;
 		
-		//Game over sequence (Displays the gameover screen)
+		// --Game over sequence--
 		if (player.gameover && !gamePause)
 		{
 			if (points >= transObjects.size())
@@ -129,11 +129,11 @@ int main()
 			snprintf(scoreText, sizeof scoreText, "%.0f", score);
 			timeCountdown = 0.01;
 		}
-		//Time countdown
+		// --Time countdown--
 		else if(!player.gameover && !gamePause)
 			timeCountdown = currentTime - GetTime();
 
-		//Game reset
+		// --Game reset--
 		if (IsKeyReleased(KEY_R) && gamePause && player.gameover)
 		{
 			currentTime = GetTime() + 50;
@@ -156,26 +156,14 @@ int main()
 		// --Drawing--
 		BeginDrawing();
 		{
-			//Background
 			DrawTextureEx(background, zero, 0, 8, WHITE);
 
-			//Playable elements
-			//Drawing the player and objects
 			for (shared_ptr<TransObject> to : transObjects)
 			{
 				to->Draw();
 			}
 			player.Draw();
 
-			//Remove this-------------------------------------------------------------------------------------<
-			char bufX[10];
-			snprintf(bufX, sizeof bufX, "%.0f", player.position.x);
-			DrawText(bufX, 500,0,30,RED);
-			char bufY[10];
-			snprintf(bufY, sizeof bufY, "%.0f", player.position.y);
-			DrawText(bufY, 600, 0, 30, RED);
-
-			//System Drawing
 			ClearBackground(DARKBROWN);
 			
 			//Countdown

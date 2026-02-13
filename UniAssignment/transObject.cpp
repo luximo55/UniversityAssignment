@@ -39,7 +39,9 @@ void TransObject::TexturePick(string choice)
 	cleanSprite = LoadTexture(sprite);
 }
 
-//Draws a specific sprite depening on the state of the object
+//Draws a specific object sprite depening on the state of the object
+/*States: wrecked and not picked up; clean and not pickupable (it has been placed in the correct place);
+clean and picked up (a ghost of the object as goal position, the player is transformed into the object)*/
 void TransObject::Draw()
 {
 	if (!isPickedUp && pickupable)
@@ -59,7 +61,7 @@ void TransObject::Draw()
 	}
 }
 
-//Check if there is collision with the player
+//Collision check for transforming into the object
 bool TransObject::Collision(Rectangle playerRect, bool isTransformed)
 {
 	if (!isTransformed)
@@ -68,7 +70,6 @@ bool TransObject::Collision(Rectangle playerRect, bool isTransformed)
 		return false;
 }
 
-//Calculates the rect dimensions 
 Rectangle TransObject::GetRect()
 {
 	return Rectangle{ position.x, position.y, float(objectSprite.width*spriteScale), float(objectSprite.height*spriteScale) };
