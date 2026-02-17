@@ -1,1 +1,5 @@
-﻿  UniAssignment.vcxproj -> C:\Users\luxim\Documents\GitHub\UniversityAssignment\x64\Debug\UniAssignment.exe
+﻿  main.cpp
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(177,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(178,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\luxim\Documents\GitHub\UniversityAssignment\UniAssignment\main.cpp(179,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  UniAssignment.vcxproj -> C:\Users\luxim\Documents\GitHub\UniversityAssignment\x64\Debug\UniAssignment.exe

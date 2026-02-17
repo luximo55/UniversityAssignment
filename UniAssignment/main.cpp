@@ -45,6 +45,7 @@ int main()
 	
 	// --Graphics--
 	Texture2D background = LoadTexture("Sprites/Background/background.png");
+	Texture2D car = LoadTexture("Sprites/Car/car.png");
 	Vector2 zero;
 	zero.x = 0;
 	zero.y = 0;
@@ -112,7 +113,7 @@ int main()
 		player.Update();
 
 		//Game over conditions
-		if (IsKeyReleased(KEY_T) || timeCountdown <= 0 || points >= transObjects.size())
+		if (timeCountdown <= 0 || points >= transObjects.size())
 			player.gameover = true;
 		
 		// --Game over sequence--
@@ -177,7 +178,7 @@ int main()
 				DrawText(scoreText, GetScreenWidth()/2 - MeasureTextEx(GetFontDefault(), scoreText, 100, 10).x/2, 150, 100, GOLD);
 				DrawText(restartText, GetScreenWidth() / 2 - MeasureTextEx(GetFontDefault(), restartText, 70, 7).x / 2, 670, 70, GOLD);
 			}
-
+			DrawTextureEx(car, zero, 0, 4, WHITE);
 		}
 		EndDrawing();
 	}
